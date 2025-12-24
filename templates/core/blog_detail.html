@@ -1,0 +1,47 @@
+{% extends 'base/base.html' %} {% load static %} {% block title %} {{ post.title }} {% endblock title %} {% block content %}
+
+<!-- HERO -->
+<section class="bg-gradient-to-l from-blue-100 via-blue-50 to-white py-24">
+    <div class="px-4 max-w-4xl mx-auto text-center">
+
+        <p class="text-3xl lg:text-5xl font-black">
+            <span class="bg-gradient-to-l bg-clip-text text-transparent from-blue-700 via-blue-500 to-blue-300">
+                {{ post.title }}
+            </span>
+        </p>
+
+        <p class="text-gray-500 font-thin mt-4">
+            {{ post.created_at|date:"F d, Y" }}
+        </p>
+    </div>
+</section>
+
+<!-- BLOG CONTENT -->
+<section class="bg-white py-20">
+    <div class="max-w-4xl mx-auto px-4">
+
+        {% if post.image %}
+        <img src="{{ post.image.url }}" alt="{{ post.title }}" class="w-full rounded-md shadow mb-10"> {% endif %}
+
+        <div class="text-gray-700 font-thin leading-relaxed space-y-6">
+            {{ post.content|linebreaks }}
+        </div>
+
+        <br><br>
+
+        <!-- BACK -->
+        <div class="flex justify-between items-center border-t pt-6">
+
+            <a href="{% url 'blog' %}" class="text-blue-500 hover:text-blue-700 font-thin">
+                ← Back to Blog
+            </a>
+
+            <p class="text-xs text-gray-400">
+                Written by CasperDEV
+            </p>
+        </div>
+
+    </div>
+</section>
+
+{% endblock content %}

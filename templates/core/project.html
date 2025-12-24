@@ -1,0 +1,50 @@
+{% extends 'base/base.html' %} {% load static %} {% block title %} My Projects {% endblock title %} {% block content %}
+<div class="py-20 flex items-center justify-center">
+    <div>
+
+        <!-- Title -->
+        <p class="lg:text-3xl font-black text-center">
+            <span class="bg-gradient-to-l bg-clip-text text-transparent from-blue-700 via-blue-500 to-blue-300">
+                My Projects
+            </span>
+        </p>
+
+        <br><br><br>
+
+        <!-- Projects Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+
+            {% for x in p %}
+            <div class="bg-white hover:shadow-xl w-[18rem] h-fit blur-md hover:blur-none transition rounded-t-md">
+
+                <!-- Clickable Image -->
+                <a href="{{ x.site_url }}" target="_blank">
+                    <img src="{{ x.image.url }}" alt="{{ x.title }}" class="rounded-t-md w-full h-48 object-cover">
+                </a>
+
+                <!-- Content -->
+                <div class="px-2">
+                    <p class="pt-4 font-thin bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-slate-500">
+                        {{ x.title }}
+                    </p>
+
+                    <p class="pt-3 font-thin text-gray-600 text-sm">
+                        {{ x.description|truncatechars:70 }}
+                    </p>
+
+                    <br>
+
+                    <!-- GitHub Button -->
+                    <a href="{{ x.github_link }}" target="_blank" class="inline-flex ml-2 bg-gradient-to-l from-blue-500 to-slate-500 hover:to-slate-600 text-white hover:shadow rounded-md transition px-4 py-1 text-xs">
+                        View Source Code
+                    </a>
+
+                    <br><br>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+</div>
+{% endblock content %}

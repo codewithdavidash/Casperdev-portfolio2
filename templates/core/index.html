@@ -1,0 +1,114 @@
+{% extends 'base/base.html' %} {% load static %} {% block title %} Home {% endblock title %} {% block content %}
+
+<!-- HERO -->
+<section class="w-full bg-gradient-to-l from-blue-100 via-blue-50 to-white py-28 lg:py-40">
+    <div class="px-4">
+        <p class="lg:text-6xl text-4xl font-black text-center">
+            Hi, I'm
+            <span class="bg-gradient-to-l bg-clip-text text-transparent from-blue-700 via-blue-500 to-blue-300">
+                CasperDEV
+            </span>
+        </p>
+
+        <br>
+
+        <p class="text-center font-thin text-gray-500 lg:text-lg max-w-3xl mx-auto">
+            A passionate full-stack developer and problem solver based in Nigeria.
+            <br class="hidden lg:block"> I build modern, scalable, and user-focused web apps with Python, JavaScript, Django, Tailwind, and React.
+        </p>
+
+        <br><br>
+
+        <div class="flex flex-col sm:flex-row gap-5 justify-center">
+            <a href="" class="bg-gradient-to-l from-blue-500 to-slate-500 hover:to-slate-600 text-white px-6 py-2 rounded-md text-center">
+                View Projects
+            </a>
+
+            <a href="{% url 'contact' %}" class="text-blue-500 border border-blue-500 hover:border-blue-700 hover:text-blue-700 px-6 py-2 rounded-md text-center">
+                Contact Me
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section class="bg-white py-24 lg:py-40">
+    <div class="px-4">
+        <p class="lg:text-6xl text-4xl font-black text-center">
+            Who is CasperDEV?
+        </p>
+
+        <br>
+
+        <p class="text-center font-thin text-gray-500 lg:text-lg max-w-3xl mx-auto">
+            I'm a result-driven developer who loves crafting clean, functional, and beautiful applications.
+            <br class="hidden lg:block"> Whether it's backend logic or frontend finesse, I bring ideas to life using Django, TailwindCSS, WebSockets, and more.
+        </p>
+
+        <br><br>
+
+        <p class="text-center font-bold text-blue-500">
+            <a href="{% url 'about' %}" class="hover:text-blue-700">
+                Learn more →
+            </a>
+        </p>
+    </div>
+</section>
+
+<!-- FEATURED PROJECTS -->
+<section class="bg-gray-100 py-20 lg:py-28">
+    <div class="px-4">
+
+        <p class="lg:text-3xl text-2xl font-black text-center">
+            <span class="bg-gradient-to-l bg-clip-text text-transparent from-blue-700 via-blue-500 to-blue-300">
+                Featured Projects
+            </span>
+        </p>
+
+        <br><br>
+
+        <div class="flex justify-center">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                {% for x in p %}
+                <div class="bg-white hover:shadow-xl w-[18rem] blur-md hover:blur-none transition rounded-t-md">
+
+                    <a href="{{ x.site_url }}" target="_blank">
+                        <img src="{{ x.image.url }}" alt="{{ x.title }}" class="rounded-t-md w-full h-48 object-cover">
+                    </a>
+
+                    <div class="px-2">
+                        <p class="pt-4 font-thin bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-slate-500">
+                            {{ x.title }}
+                        </p>
+
+                        <p class="pt-3 font-thin text-gray-600 text-sm">
+                            {{ x.description|truncatechars:70 }}
+                        </p>
+
+                        <br>
+
+                        <a href="{{ x.github_link }}" target="_blank" class="inline-flex bg-gradient-to-l from-blue-500 to-slate-500 hover:to-slate-600 text-white hover:shadow rounded-md transition px-4 py-1 text-xs">
+                            View Source Code
+                        </a>
+
+                        <br><br>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+
+        <br><br>
+
+        <p class="text-center">
+            <a href="{% url 'project' %}" class="font-thin text-blue-500 hover:text-blue-700 tracking-tight">
+                View Projects →
+            </a>
+        </p>
+
+    </div>
+</section>
+
+{% endblock content %}

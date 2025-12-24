@@ -1,0 +1,149 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock title %} | CasperDEV</title>
+    <script src="{% static 'js/tailwindcss.js' %}"></script>
+    <script src="{% static 'js/index.js' %}" defer></script>
+    <link rel="shortcut icon" href="{% static 'images/my_logo.png' %}" type="image/x-icon">
+</head>
+
+<body class="pt-20">
+
+    <!-- NAVBAR -->
+    <div class="flex items-center justify-between py-4 px-4 lg:px-20 shadow-xl bg-white fixed top-0 w-full z-50">
+        <a href="{% url 'index' %}">
+            <img src="{% static 'images/my_logo.png' %}" alt="Logo" class="rounded-lg h-12 w-12">
+        </a>
+
+        <!-- Desktop Menu -->
+        <div class="hidden lg:flex items-center gap-10 text-sm">
+            <a href="{% url 'index' %}" class="text-gray-500 hover:text-gray-700">Home</a>
+            <a href="{% url 'services' %}" class="text-gray-500 hover:text-gray-700">Services</a>
+            <a href="{% url 'contact' %}" class="text-gray-500 hover:text-gray-700">Contact</a>
+            <a href="{% url 'blog' %}" class="text-gray-500 hover:text-gray-700">Blogs</a>
+        </div>
+
+        <div class="flex items-center gap-4">
+            <!-- Donate Button -->
+            <a href="#" class="hidden lg:flex items-center gap-1 bg-gradient-to-l from-blue-500 to-slate-500 text-white rounded-md px-4 py-2 text-xs">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                    <path d="M12 7.5a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5Z" />
+                    <path fill-rule="evenodd"
+                        d="M1.5 4.875C1.5 3.839 2.34 3 3.375 3h17.25c1.035 0 1.875.84 1.875 1.875v9.75c0 1.036-.84 1.875-1.875 1.875H3.375A1.875 1.875 0 0 1 1.5 14.625v-9.75Z"
+                        clip-rule="evenodd" />
+                    <path
+                        d="M2.25 18a.75.75 0 0 0 0 1.5c5.4 0 10.63.722 15.6 2.075 1.19.324 2.4-.558 2.4-1.82V18.75a.75.75 0 0 0-.75-.75H2.25Z" />
+                </svg> Donate
+            </a>
+
+            <button onclick="OpenNav()" class="font-semibold">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- SIDEBAR -->
+    <div id="Sidebar" class="fixed inset-y-0 right-0 w-64 bg-black/50 transform translate-x-full transition-transform duration-300 z-50">
+
+        <!-- Close -->
+        <div class="p-5">
+            <button onclick="CloseNav()" class="text-white hover:text-red-500">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+
+        <nav class="text-white text-sm">
+            <!-- Home -->
+            <a href="{% url 'index' %}" class="p-5 flex items-center gap-2 hover:bg-white/10">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-4">
+                    <path
+                        d="M8.543 2.232a.75.75 0 0 0-1.085 0l-5.25 5.5A.75.75 0 0 0 2.75 9H4v4a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-1a1 1 0 1 1 2 0v1a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1V9h1.25a.75.75 0 0 0 .543-1.268l-5.25-5.5Z" />
+                </svg> Home
+            </a>
+
+            <!-- Contact -->
+            <a href="{% url 'contact' %}" class="p-5 flex items-center gap-2 hover:bg-white/10">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-4">
+                    <path fill-rule="evenodd"
+                        d="m3.855 7.286 1.067-.534a1 1 0 0 0 .542-1.046l-.44-2.858A1 1 0 0 0 4.036 2H3a1 1 0 0 0-1 1v2c0 .709.082 1.4.238 2.062a9.012 9.012 0 0 0 6.7 6.7A9.024 9.024 0 0 0 11 14h2a1 1 0 0 0 1-1v-1.036a1 1 0 0 0-.848-.988l-2.858-.44a1 1 0 0 0-1.046.542l-.534 1.067a7.52 7.52 0 0 1-4.86-4.859Z"
+                        clip-rule="evenodd" />
+                </svg> Contact
+            </a>
+
+            <!-- Blogs -->
+            <a href="{% url 'blog' %}" class="p-5 flex items-center gap-2 hover:bg-white/10">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-4">
+                    <path fill-rule="evenodd"
+                        d="M1 8.74c0 .983.713 1.825 1.69 1.943.904.108 1.817.19 2.737.243.363.02.688.231.85.556l1.052 2.103a.75.75 0 0 0 1.342 0l1.052-2.103c.162-.325.487-.535.85-.556.92-.053 1.833-.134 2.738-.243.976-.118 1.689-.96 1.689-1.942V4.259c0-.982-.713-1.824-1.69-1.942a44.45 44.45 0 0 0-10.62 0C1.712 2.435 1 3.277 1 4.26v4.482Z" />
+                </svg> Blogs
+            </a>
+
+            <!-- Projects -->
+            <a href="{% url 'project' %}" class="p-5 flex items-center gap-2 hover:bg-white/10">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-4">
+                    <path fill-rule="evenodd"
+                        d="M4.78 4.97a.75.75 0 0 1 0 1.06L2.81 8l1.97 1.97a.75.75 0 1 1-1.06 1.06l-2.5-2.5a.75.75 0 0 1 0-1.06l2.5-2.5a.75.75 0 0 1 1.06 0ZM11.22 4.97a.75.75 0 0 0 0 1.06L13.19 8l-1.97 1.97a.75.75 0 1 0 1.06 1.06l2.5-2.5a.75.75 0 0 0 0-1.06l-2.5-2.5a.75.75 0 0 0-1.06 0ZM8.856 2.008a.75.75 0 0 1 .636.848l-1.5 10.5a.75.75 0 0 1-1.484-.212l1.5-10.5a.75.75 0 0 1 .848-.636Z"
+                        clip-rule="evenodd" />
+                </svg> Projects
+            </a>
+
+            <!-- Donate -->
+            <a href="#" class="p-5 flex items-center gap-2 hover:bg-white/10">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-4">
+                    <path d="M2.5 3A1.5 1.5 0 0 0 1 4.5V5h14v-.5A1.5 1.5 0 0 0 13.5 3h-11Z" />
+                    <path fill-rule="evenodd"
+                        d="M15 7H1v4.5A1.5 1.5 0 0 0 2.5 13h11a1.5 1.5 0 0 0 1.5-1.5V7ZM3 10.25a.75.75 0 0 1 .75-.75h.5a.75.75 0 0 1 0 1.5h-.5a.75.75 0 0 1-.75-.75Zm3.75-.75a.75.75 0 0 0 0 1.5h2.5a.75.75 0 0 0 0-1.5h-2.5Z"
+                        clip-rule="evenodd" />
+                </svg> Donate
+            </a>
+
+            <!-- About -->
+            <a href="{% url 'about' %}" class="p-5 flex items-center gap-2 hover:bg-white/10">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-4">
+                    <path
+                        d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z" />
+                </svg> About
+            </a>
+        </nav>
+    </div>
+
+    <script>
+        function OpenNav() {
+            document.getElementById('Sidebar').classList.remove('translate-x-full');
+        }
+
+        function CloseNav() {
+            document.getElementById('Sidebar').classList.add('translate-x-full');
+        }
+    </script>
+    <!-- PAGE CONTENT -->
+    <div class="">
+        {% block content %} {% endblock content %}
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <section class="bg-black p-5 flex items-center w-full justify-center">
+            <p class="text-white">
+                2026
+                <span class="font-normal text-blue-500">
+                    CasperDEV&copy;
+                </span> Portfolio. All Rights Reserved.
+            </p>
+        </section>
+    </footer>
+
+</body>
+
+</html>

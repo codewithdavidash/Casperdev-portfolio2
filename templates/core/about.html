@@ -1,0 +1,100 @@
+{% extends 'base/base.html' %} {% load static %} {% block title %} About me :) {% endblock title %} {% block content %}
+
+<div class="py-20 flex justify-center">
+    <div class="max-w-5xl w-full px-4">
+
+        <!-- ABOUT -->
+        <div class="flex flex-col lg:flex-row items-center gap-8">
+
+            <!-- Image -->
+            <a href="{% static 'images/photo.jpg' %}" target="_blank">
+                <img src="{% static 'images/photo.jpg' %}" alt="My Photo" class="rounded-md w-48 sm:w-60 lg:w-64 h-auto">
+            </a>
+
+            <!-- Text -->
+            <div>
+                <p class="lg:text-3xl text-2xl font-black">
+                    <span class="bg-gradient-to-l bg-clip-text text-transparent from-blue-700 via-blue-500 to-blue-300">
+                        About Me
+                    </span>
+                </p>
+
+                <br>
+
+                <p class="text-gray-600 tracking-tight font-thin leading-relaxed">
+                    I am Ashafoke David, an undergraduate in Computer Science and a full-stack developer focused on building smart, fast, and modern web applications.
+                    <br><br> I specialize in Django, TailwindCSS, WebSocket real-time features, and clean UI/UX design.
+                    <br><br> I believe every line of code should solve a real-world problem.
+                </p>
+            </div>
+        </div>
+
+        <br><br>
+        <hr>
+        <br><br>
+
+        <!-- TECH STACK -->
+        <p class="lg:text-3xl text-2xl font-black">
+            <span class="bg-gradient-to-l bg-clip-text text-transparent from-blue-700 via-blue-500 to-blue-300">
+                Tech Stack
+            </span>
+        </p>
+
+        <br>
+
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 tracking-tight">
+
+            <div class="flex items-center gap-2 shadow rounded-md p-3">
+                <img src="{% static 'images/html.png' %}" alt="HTML" class="h-8">
+                <p class="font-thin">HTML</p>
+            </div>
+
+            <div class="flex items-center gap-2 shadow rounded-md p-3 text-blue-700">
+                <img src="{% static 'images/css.png' %}" alt="CSS" class="h-8">
+                <p class="font-thin">CSS</p>
+            </div>
+
+            <div class="flex items-center gap-2 shadow rounded-md p-3 text-yellow-500">
+                <img src="{% static 'images/javascript.png' %}" alt="JavaScript" class="h-8">
+                <p class="font-thin">JavaScript</p>
+            </div>
+
+            <div class="flex items-center gap-2 shadow rounded-md p-3 text-blue-500">
+                <img src="{% static 'images/python.jpg' %}" alt="Python" class="h-8">
+                <p class="font-thin">Python</p>
+            </div>
+
+            <div class="flex items-center gap-2 shadow rounded-md p-3 text-blue-400">
+                <img src="{% static 'images/tailwindcss.png' %}" alt="TailwindCSS" class="h-8">
+                <p class="font-thin">TailwindCSS</p>
+            </div>
+
+            <div class="flex items-center gap-2 shadow rounded-md p-3 text-blue-500">
+                <img src="{% static 'images/postgresql.png' %}" alt="PostgreSQL" class="h-8">
+                <p class="font-thin">PostgreSQL</p>
+            </div>
+
+            <div class="flex items-center gap-2 shadow rounded-md p-3 text-red-500">
+                <img src="{% static 'images/git.png' %}" alt="Git" class="h-8">
+                <p class="font-thin">Git</p>
+            </div>
+
+            <div class="flex items-center justify-center shadow rounded-md p-3">
+                <img src="{% static 'images/django.png' %}" alt="Django" class="h-8">
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- DOWNLOAD -->
+<div class="flex my-10 justify-center">
+    <a href="" class="bg-gradient-to-l from-blue-500 to-slate-500 hover:to-slate-600 text-white rounded-md px-6 py-2 text-xs flex items-center gap-2 transition">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+            <path stroke-linecap="round" stroke-linejoin="round"
+                d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
+        </svg> Download Resume
+    </a>
+</div>
+
+{% endblock content %}

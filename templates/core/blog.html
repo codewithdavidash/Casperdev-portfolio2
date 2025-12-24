@@ -1,0 +1,63 @@
+{% extends 'base/base.html' %} {% load static %} {% block title %} Blog {% endblock title %} {% block content %}
+
+<!-- HERO -->
+<section class="bg-gradient-to-l from-blue-100 via-blue-50 to-white py-24">
+    <div class="px-4">
+        <p class="text-4xl lg:text-5xl font-black text-center">
+            <span class="bg-gradient-to-l bg-clip-text text-transparent from-blue-700 via-blue-500 to-blue-300">
+                Blog
+            </span>
+        </p>
+
+        <p class="text-center text-gray-500 font-thin mt-6 max-w-2xl mx-auto">
+            Thoughts, tutorials, and insights about web development, Django, backend systems, and clean UI design.
+        </p>
+    </div>
+</section>
+
+<!-- BLOG POSTS -->
+<section class="bg-white py-24">
+    <div class="max-w-6xl mx-auto px-4">
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
+            {% for post in posts %}
+            <div class="bg-white shadow hover:shadow-xl transition rounded-md overflow-hidden">
+
+                <!-- Image -->
+                {% if post.image %}
+                <a href="{% url 'blog_detail' post.slug %}">
+                    <img src="{{ post.image.url }}" alt="{{ post.title }}" class="w-full h-48 object-cover">
+                </a>
+                {% endif %}
+
+                <!-- Content -->
+                <div class="p-5">
+                    <p class="text-lg font-semibold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-slate-500">
+                        {{ post.title }}
+                    </p>
+
+                    <p class="text-gray-500 text-xs font-thin mt-2">
+                        {{ post.created_at|date:"M d, Y" }}
+                    </p>
+
+                    <p class="text-gray-600 font-thin text-sm mt-3">
+                        {{ post.content|truncatechars:120 }}
+                    </p>
+
+                    <a href="{% url 'blog_detail' post.slug %}" class="inline-block mt-4 text-blue-500 hover:text-blue-700 text-sm font-thin">
+                        Read more →
+                    </a>
+                </div>
+            </div>
+            {% empty %}
+            <p class="text-center text-gray-500 col-span-3">
+                No blog posts yet.
+            </p>
+            {% endfor %}
+
+        </div>
+    </div>
+</section>
+
+{% endblock content %}
